@@ -1,48 +1,6 @@
-.newTask{
-    position: absolute;
-    top: 10.8125rem;
-    height: 3.375rem;
-    width: 736px;
-
-    display: flex;
-    gap: 8px;
-}
-
-.newTask > button{
-    height: 100%;
-    width: 90px;
-    border: none;
-    border-radius: 10px;
-    color: var(--gray-100);
-    font-weight: 100;
-    background: var(--blue-dark);
-    font-weight: bold;
-    font-size: 0.875rem;
-
-    border: solid 1px var(--gray-600);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    gap: 8px;
-    cursor: pointer;
-}
-
-.newTask > button:hover{
-    background: var(--blue);
-}
-
-.newTask > input {
-    height: 100%;
-    width: 100%;
-    padding: 1rem;
-    border-radius: 10px;
-    border: solid 1px var(--gray-700);
-    background: var(--gray-500);
-}
-
 .wrapper{
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
