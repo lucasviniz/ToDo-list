@@ -12,6 +12,8 @@ export function TaskArea() {
 
     const [newTasks, setNewTasks] = useState('');
 
+    const [tasksConcluded, setTasksConcluded] = useState(0)
+
     function handleCreateNewTask(event: FormEvent){
         event.preventDefault();
         setTasks([...tasks, newTasks])
@@ -27,6 +29,34 @@ export function TaskArea() {
         event.target.setCustomValidity('Esse campo é obrigatório');
     }
 
+    function deleteTask(taskToDelete: string) {
+        const tasksWithoutDeletedOne = tasks.filter(task => {
+            return task != taskToDelete;
+        })
+        
+        setTasks(tasksWithoutDeletedOne);
+        if(tasksConcluded != 0){
+            setTasksConcluded((state) => {
+                return state - 1;
+            });
+        }
+    }
+
+
+    function handleTasksConcluded(taskDone: boolean){
+        if(taskDone){
+            setTasksConcluded((state) => {
+                return state + 1;
+            });
+        }else {
+            setTasksConcluded((state) => {
+                return state - 1;
+            })
+        }
+        
+    }
+
+
     return (
         <div className={styles.taskArea}>
             <form onSubmit={handleCreateNewTask} className={styles.newTask}>
@@ -38,7 +68,7 @@ export function TaskArea() {
                     type="text"
                     placeholder="Adicione uma nova tarefa"
                 />
-                <button type="submit">Criar<PlusCircle size={20}/></button>
+                <button type="submit">Criar<PlusCircle weight="bold" size={20}/></button>
             </form>
             <div className={styles.taskCreated}>
                 <div className={styles.taskStatus}>
@@ -49,7 +79,7 @@ export function TaskArea() {
                     
                     <div className={styles.statusConcluded}>
                         <h4>Concluídas</h4>
-                        <span>0</span>
+                        <span>{tasks.length != 0 ? tasksConcluded + ' de ' + tasks.length : 0}</span>
                     </div>
                     
                 </div>
@@ -60,7 +90,12 @@ export function TaskArea() {
                    {(tasks.length != 0) ? (
                         tasks.map(content => {
                         return (
-                            <Task content={content}/>
+                            <Task 
+                                key={content}
+                                content={content} 
+                                onDeleteTask={deleteTask}
+                                onTaskConcluded={handleTasksConcluded}
+                            />
                         ) 
                         })
                    ) : (

@@ -33,6 +33,7 @@
 .newTask > input {
     height: 100%;
     width: 100%;
+    color: var(--gray-100);
     padding: 1rem;
     border-radius: 10px;
     border: solid 1px var(--gray-700);
@@ -44,7 +45,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 736px;
     flex-direction: column;
     position: absolute;
     top: 10.8125rem;
@@ -114,5 +114,27 @@
 }
 
 .taskList{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     margin-top: 1.5rem;
+}
+
+
+@media(max-width: 800px){
+    .taskArea{
+        width: 536px;
+    }
+}
+
+@media(max-width: 550px){
+    .taskArea{
+        width: 436px;
+    }
+}
+
+@media(min-width: 800px){
+    .taskArea{
+        width: 736px;
+    }
 }

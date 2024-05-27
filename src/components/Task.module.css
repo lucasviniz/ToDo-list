@@ -1,17 +1,35 @@
 .task{
     display: flex;
     width: 100%;
-    padding: 1rem;
     background: var(--gray-500);
     border-radius: 10px;
     border: 1px solid var(--gray-400);
     gap: 12px;
-    align-items: center;
     cursor: pointer;
 }
 
-.task > p {
+.taskContent{
+    display: flex;
+    margin: 1rem 0 1rem 1rem;
+    align-items: center;
+    gap: 12px;
     color: var(--gray-100);
+    
+    font-size: 0.875rem;
+}
+
+.taskTextNoMark {
+    word-wrap: break-word;
+    color: var(--gray-100);
+    user-select: none;
+    font-size: 0.875rem;
+}
+
+.taskTextMark {
+    word-wrap: break-word;
+    color: var(--gray-300);
+    text-decoration: line-through;
+    user-select: none;
     font-size: 0.875rem;
 }
 
@@ -19,7 +37,33 @@ Circle{
     color: var(--blue);
 }
 
+.trash{
+    height: 100%;
+    margin: 1rem;
+    color: var(--gray-300);
+}
+
 .trash:hover{
     color: var(--danger);
     cursor: pointer;
+}
+
+.task button{
+    display: flex;
+    height: 100%;
+    background: none;
+    border: none;
+}
+
+.task button:active{
+    border: none;
+}
+
+.task header{
+    width: 100%;
+}
+
+.taskContent > button{
+    cursor: pointer;
+    
 }
